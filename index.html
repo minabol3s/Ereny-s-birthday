@@ -125,7 +125,7 @@
         <div class="buttons">
             <button class="button" onclick="toggleStory()">بداية القصة</button>
             <button class="button" id="mButton">M♥E</button>
-            <button class="button" id="messageButton">رسالة ليكي</button>
+            <button class="button" id="messageButton" onclick="toggleMessage()">رسالة ليكي</button>
         </div>
         <p class="message">"كل سنة وانتي طيبة يا أجمل حد في حياتي ❤️، ربنا يجعلها سنة حلوة عليكي وتحققي فيها كل اللي بتتمنيه! بحبك يا إيريني، مينا ❤️"</p>
     </div>
@@ -177,17 +177,21 @@
             // Start the falling text loop
             fallingTextInterval = setInterval(createFallingText, 500);  // Call the function every 500ms
 
-            // Stop the falling text after 20 seconds
+            // Stop the falling text after 4 seconds
             setTimeout(function() {
-                clearInterval(fallingTextInterval);  // Stop the loop after 20 seconds
-            }, 20000);  // 20 seconds
+                clearInterval(fallingTextInterval);  // Stop the loop after 4 seconds
+            }, 4000);  // 4 seconds
         });
 
-        // Show the birthday message on "رسالة ليكي" button click
-        document.getElementById("messageButton").addEventListener("click", function() {
+        // Toggle the birthday message on button click
+        function toggleMessage() {
             var message = document.getElementById("birthdayMessage");
-            message.style.display = "block";  // Show the birthday message
-        });
+            if (message.style.display === "none" || message.style.display === "") {
+                message.style.display = "block";  // Show the birthday message
+            } else {
+                message.style.display = "none";  // Hide the birthday message
+            }
+        }
     </script>
 </body>
 </html>
