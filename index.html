@@ -173,7 +173,12 @@
 
         // Start the loop for "M♥E" button
         document.getElementById("mButton").addEventListener("click", function() {
-            setInterval(createFallingText, 500);  // Call the function every 500ms
+            var fallingTextInterval = setInterval(createFallingText, 500);  // Call the function every 500ms
+
+            // Stop the falling text after 20 seconds
+            setTimeout(function() {
+                clearInterval(fallingTextInterval);  // Stop the loop after 20 seconds
+            }, 20000);  // 20 seconds
         });
 
         // Show the birthday message on "رسالة ليكي" button click
