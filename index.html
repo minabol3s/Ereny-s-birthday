@@ -172,8 +172,10 @@
         }
 
         // Start the loop for "M♥E" button
+        let fallingTextInterval;
         document.getElementById("mButton").addEventListener("click", function() {
-            var fallingTextInterval = setInterval(createFallingText, 500);  // Call the function every 500ms
+            // Start the falling text loop
+            fallingTextInterval = setInterval(createFallingText, 500);  // Call the function every 500ms
 
             // Stop the falling text after 20 seconds
             setTimeout(function() {
