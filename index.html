@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عيد ميلاد سعيد إيريني</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+        body {
+            font-family: 'Cairo', sans-serif;
+            text-align: center;
+            background-color: #ffe6f2;
+            color: #d63384;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: none;  /* Initially hide the container */
+        }
+        h1 {
+            font-size: 2.5em;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #d63384;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+        .message {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+        .story {
+            display: none;
+            margin-top: 20px;
+            background: #fff0f5;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .story img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .falling-text {
+            position: absolute;
+            font-size: 20px;
+            color: #ff1493;
+            animation: fall 3s ease-in forwards;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -50px;
+                opacity: 1;
+            }
+            100% {
+                top: 100vh;
+                opacity: 0;
+            }
+        }
+
+        .birthday-message {
+            display: none;
+            font-size: 1.5em;
+            background: #f8d7da;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .countdown-message {
+            font-size: 2em;
+            margin-top: 20px;
+            color: #ff1493;
+            font-weight: bold;
+        }
+
+        /* Animation for the "اموت انااا 😂😍" message */
+        .preload-message {
+            font-size: 2.5em;
+            color: #ff1493;
+            font-weight: bold;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: fadeOut 2s ease-out forwards;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="preload-message" id="preloadMessage">اموت انااا 😂😍</div>  <!-- Preload message -->
+
+    <div class="container" id="mainContent">
+        <h1>🎉 كل سنة وانتي طيبة يا إيريني! 🎂</h1>
+        <div class="countdown-message" id="countdownMessage">الحلووووووووو اللي هيكبر سنه 🥳🥳🥳🥳🥳🥳🥳🥳🥳</div>
+        <div class="buttons">
+            <button class="button" onclick="toggleStory()">بداية القصة</button>
+            <button class="button" id="mButton">M♥E</button>
+            <button class="button" id="messageButton">رسالة ليكي</button>
+        </div>
+        <p class="message">"كل سنة وانتي طيبة يا أجمل حد في حياتي ❤️، ربنا يجعلها سنة حلوة عليكي وتحققي فيها كل اللي بتتمنيه! بحبك يا إيريني، مينا ❤️"</p>
+    </div>
+    
+    <div class="story" id="storySection">
+        <img src="Screenshot_20250122-195054.jpg" id="storyImage" alt="صورة بداية القصة">
+        <p>في يوم 7/6/2024<br>
+        كان اول كلام بينا رغم اني كنت خايف ارد 😂بس حسيت ب حاجه غريبه اوي لما لقيت المسدج منك "شيل اللايككك😂"<br>
+        من هنا بدات اجمل قصه 😍😘<br>
+        ربنا يديمك لياا</p>
+    </div>
+    
+    <div class="birthday-message" id="birthdayMessage">
+        <p>كل سنة وانتي طيبة يا إيريني، عيد ميلاد سعيد! 🥳🎉 أنا سعيد جدًا إنك في حياتي، وبتمنى لك سنة مليانة بالفرح والنجاح. ربنا يحقق لك كل أحلامك، ويخليكي ليا دايمًا. بحبك! ❤️</p>
+    </div>
+    
+    <script>
+        // Show the main content after the preload message fades out
+        setTimeout(function() {
+            document.getElementById("preloadMessage").style.display = "none"; // Hide the preload message
+            document.getElementById("mainContent").style.display = "block"; // Show the main content
+        }, 3000); // Time for the "اموت انااا" to stay before it fades
+
+        function toggleStory() {
+            var storySection = document.getElementById("storySection");
+            if (storySection.style.display === "none" || storySection.style.display === "") {
+                storySection.style.display = "block";
+            } else {
+                storySection.style.display = "none";
+            }
+        }
+
+        function createFallingText() {
+            let text = document.createElement("div");
+            text.classList.add("falling-text");
+            text.innerText = "بحبك يا إيرو";
+            text.style.left = Math.random() * 100 + "vw";  // Random horizontal position
+            document.body.appendChild(text);
+
+            // Remove the falling text after 3 seconds
+            setTimeout(() => {
+                text.remove();
+            }, 3000);
+        }
+
+        // Start the loop for "M♥E" button
+        document.getElementById("mButton").addEventListener("click", function() {
+            setInterval(createFallingText, 500);  // Call the function every 500ms
+        });
+
+        // Show the birthday message on "رسالة ليكي" button click
+        document.getElementById("messageButton").addEventListener("click", function() {
+            var message = document.getElementById("birthdayMessage");
+            message.style.display = "block";  // Show the birthday message
+        });
+    </script>
+</body>
+</html>
